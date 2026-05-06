@@ -134,21 +134,15 @@ function Select({ value, options, onChange }: { value: string; options: { value:
         border: "1px solid #32325a",
         borderRadius: 9,
         color: "#e8e8f8",
-        padding: "8px 26px 8px 10px",
+        padding: "8px 10px",
         fontSize: 12,
         fontFamily: "inherit",
         cursor: "pointer",
         outline: "none",
-        appearance: "none",
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236060a0' d='M5 6L0 0h10z'/%3E%3C/svg%3E")`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "right 9px center",
       }}
     >
       {options.map((o) => (
-        <option key={o.value} value={o.value} style={{ background: "#22223a", color: "#e8e8f8" }}>
-          {o.label}
-        </option>
+        <option key={o.value} value={o.value}>{o.label}</option>
       ))}
     </select>
   );

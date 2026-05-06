@@ -33,7 +33,9 @@ function App() {
       if (downloaded.length > 0 && !downloaded.includes(model)) {
         setModel(downloaded[0]);
       }
-    } catch {}
+    } catch (e) {
+      console.error("get_model_status failed:", e);
+    }
   };
 
   useEffect(() => { loadModelStatus(); }, []);

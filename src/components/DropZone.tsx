@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { invoke } from "@tauri-apps/api/core";
 import { Translations } from "../i18n";
 
 interface Props {
@@ -23,16 +24,14 @@ export default function DropZone({ t, file, fileName, onFile }: Props) {
     onFile((f as any).path || f.name, f.name);
   }, [onFile]);
 
-  const handleClick = useCallback(() => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = ACCEPTED.join(",");
-    input.onchange = (e) => {
-      const f = (e.target as HTMLInputElement).files?.[0];
-      if (!f) return;
-      onFile((f as any).path || f.name, f.name);
-    };
-    input.click();
+  const handleClick = useCallback(async () => {
+    try {
+      const path = await invoke<string | null>("pick_file");
+      if (path) {
+        const name = path.split("/").pop() || path;
+        onFile(path, name);
+      }
+    } catch {}
   }, [onFile]);
 
   return (

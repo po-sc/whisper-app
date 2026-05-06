@@ -30,6 +30,8 @@ export const T = {
     modelDownloaded: "Скачана",
     modelDownload: "Скачать",
     modelDownloading: "Скачивается...",
+    modelDelete: "Удалить",
+    modelDeleting: "Удаляю...",
     langs: { ru: "Русский", en: "English", de: "Deutsch", fr: "Français", es: "Español", zh: "中文", ja: "日本語" },
     formats: { txt: "TXT — текст", srt: "SRT — субтитры", vtt: "VTT — веб", json: "JSON" },
   },
@@ -62,9 +64,14 @@ export const T = {
     modelDownloaded: "Downloaded",
     modelDownload: "Download",
     modelDownloading: "Downloading...",
+    modelDelete: "Delete",
+    modelDeleting: "Deleting...",
     langs: { ru: "Russian", en: "English", de: "Deutsch", fr: "Français", es: "Spanish", zh: "Chinese", ja: "Japanese" },
     formats: { txt: "TXT — plain text", srt: "SRT — subtitles", vtt: "VTT — web", json: "JSON" },
   },
 } as const;
 
 export type Translations = typeof T.ru;
+
+// Compile-time check: if EN is missing any key that RU has, this line fails
+type _LocaleCheck = typeof T extends Record<Locale, Translations> ? true : never;
