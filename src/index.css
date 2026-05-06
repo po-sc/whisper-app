@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { color-scheme: dark; }
+
+:root {
+  --bg:        #0e0e18;
+  --surface:   #18182a;
+  --surface2:  #22223a;
+  --border:    #32325a;
+  --text:      #e8e8f8;
+  --muted:     #8080b0;
+  --accent:    #9b6dff;
+  --accent2:   #4d8aff;
+  --green:     #22d97a;
+  --red:       #ff5566;
+  --radius:    14px;
+  --radius-sm: 9px;
+}
+
+html, body, #root {
+  background-color: #0e0e18 !important;
+  color: #e8e8f8 !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  overflow: hidden;
+}
+
+body { user-select: none; }
+
+#root { height: 100vh; display: flex; flex-direction: column; }
+
+select, input, button, textarea {
+  color-scheme: dark;
+  font-family: inherit;
+}
+
+/* Force dark on select options */
+select option {
+  background: #22223a;
+  color: #e8e8f8;
+}
