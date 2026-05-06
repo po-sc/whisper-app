@@ -1,6 +1,41 @@
 export type Locale = "ru" | "en";
 
-export const T = {
+export type Translations = {
+  title: string;
+  dropTitle: string;
+  dropSub: string;
+  dropFormats: string;
+  dropChange: string;
+  labelModel: string;
+  labelLang: string;
+  labelFormat: string;
+  labelOutput: string;
+  outputDefault: string;
+  btnChooseFolder: string;
+  btnTranscribe: string;
+  btnCancel: string;
+  btnBack: string;
+  btnCopy: string;
+  btnCopied: string;
+  btnNewFile: string;
+  stageLoading: string;
+  stageExtracting: string;
+  stageTranscribing: string;
+  stageSaving: string;
+  resultTitle: string;
+  savedTo: string;
+  errorTitle: string;
+  modelsTitle: string;
+  modelDownloaded: string;
+  modelDownload: string;
+  modelDownloading: string;
+  modelDelete: string;
+  modelDeleting: string;
+  langs: Record<string, string>;
+  formats: Record<string, string>;
+};
+
+export const T: Record<Locale, Translations> = {
   ru: {
     title: "Whisper",
     dropTitle: "Перетащи файл сюда",
@@ -69,9 +104,4 @@ export const T = {
     langs: { ru: "Russian", en: "English", de: "Deutsch", fr: "Français", es: "Spanish", zh: "Chinese", ja: "Japanese" },
     formats: { txt: "TXT — plain text", srt: "SRT — subtitles", vtt: "VTT — web", json: "JSON" },
   },
-} as const;
-
-export type Translations = typeof T.ru;
-
-// Compile-time check: if EN is missing any key that RU has, this line fails
-type _LocaleCheck = typeof T extends Record<Locale, Translations> ? true : never;
+};

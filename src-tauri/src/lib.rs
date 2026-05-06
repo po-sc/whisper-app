@@ -85,7 +85,7 @@ print("PROGRESS:100", flush=True)
     let stdout = child.stdout.take().ok_or("failed to capture stdout")?;
     let reader = BufReader::new(stdout);
 
-    for line in reader.lines().flatten() {
+    for line in reader.lines().map_while(Result::ok) {
         if let Some(pct) = line.strip_prefix("PROGRESS:") {
             if let Ok(p) = pct.trim().parse::<u32>() {
                 let _ = app.emit("download-progress", serde_json::json!({ "progress": p }));
